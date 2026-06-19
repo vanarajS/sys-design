@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐍 Snake Game - Neon Edition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="neon-circle" style="top: 10%; left: 20%;"></div>
+        <div class="neon-circle" style="top: 70%; right: 10%;"></div>
+        <div class="neon-circle" style="bottom: 20%; left: 60%;"></div>
+    </div>
+
+    <div class="game-container">
+        <h1 class="game-title">
+            SNAKE
+            <span class="neon-text">NEON</span>
+            QUEST
+        </h1>
+        
+        <canvas id="gameCanvas" width="600" height="600"></canvas>
+        
+        
+        <div class="game-controls">
+            <button class="game-btn" onclick="game.startGame()">START</button>
+            <button class="game-btn" onclick="game.pauseGame()">PAUSE</button>
+            <button class="game-btn" onclick="game.resetGame()">RESET</button>
+        </div>
+        
+        <div class="instructions">
+            <p>🎯 Use arrow keys or WASD to move</p>
+            <p>💎 Collect food to grow and score</p>
+            <p>⚡ Avoid walls and your own tail</p>
+        </div>
+    </div>
+
+    <script>
+        const gameColors = {{ colors | tojson }}
+    </script>
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>

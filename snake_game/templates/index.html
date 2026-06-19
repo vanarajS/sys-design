@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐍 Snake Game - Neon Edition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="neon-circle" style="top: 10%; left: 20%;"></div>
+        <div class="neon-circle" style="top: 70%; right: 10%;"></div>
+        <div class="neon-circle" style="bottom: 20%; left: 60%;"></div>
+    </div>
+
+    <div class="game-container">
+        <h1 class="game-title">
+            SNAKE
+            <span class="neon-text">NEON</span>
+            QUEST
+        </h1>
+        
+        <canvas id="gameCanvas" width="600" height="600"></canvas>
+        
+        <div class="combo-display">
+            <span class="label">COMBO:</span>
+            <span class="score" id="combo">0/5</span>
+        </div>
+        
+        <div class="power-up-status" id="powerUpStatus">
+            <!-- Power-up indicators will be dynamically added here -->
+        </div>
+        
+        <!-- Power-up notification popup -->
+        <div class="power-up-notification" id="powerUpNotification">
+            <div class="notification-content">
+                <div class="notification-icon" id="notificationIcon"></div>
+                <div class="notification-text">
+                    <div class="notification-title" id="notificationTitle"></div>
+                    <div class="notification-description" id="notificationDescription"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-controls">
+            <button class="game-btn" onclick="game.startGame()">START</button>
+            <button class="game-btn" onclick="game.pauseGame()">PAUSE</button>
+            <button class="game-btn" onclick="game.resetGame()">RESET</button>
+        </div>
+        
+        <div class="instructions">
+            <p>🎯 Use arrow keys or WASD to move</p>
+            <p>💎 Collect food to grow and score</p>
+            <p>⚡ Avoid walls and your own tail</p>
+            <p>🎁 Collect 5 foods in a row for bonus fruits!</p>
+        </div>
+    </div>
+
+    <script>
+        const gameColors = {{ colors | tojson }}
+    </script>
+    <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>
